@@ -1,0 +1,51 @@
+setting:
+  dataset_name: "spires"
+  scan_path: "./dataset/spires/Oxford-Spires/christ_church_02/input/vilens_slam/individual_clouds"
+  pose_path: "./dataset/spires/Oxford-Spires/christ_church_02/input/vilens_slam/slam_poses.txt"
+  calib_path: "./dataset/spires/Oxford-Spires/christ_church_02/T_gt_lidar.txt"
+  output_path: "./output/spires/christ_church_02"
+  begin_frame: 0
+  end_frame: -1
+  skip_frame: 3
+  device: "cuda"
+
+preprocess:
+  min_range: 1.5
+  max_range: 80.0
+  voxel_downsample: True
+  voxel_downsample_size: 0.08
+
+hash_grid:
+  min_resolution: 0.3
+  num_resolution: 2
+  scale_up: 1.5
+
+decoder:
+  feature_dim: 8
+  hidden_dim: 32
+  num_layers: 2
+  freeze_frame: 20
+
+sampler:
+  truncation_range: 0.3
+  front_sample_num: 2
+  behind_sample_num: 2
+  free_sample_num: 5
+
+manager:
+  active_pooling: True
+  max_sample_per_voxel: 256
+  active_sampling: True
+  save_log_pool: True
+
+training:
+  iters: 15
+  batch_size: 16384
+  learning_rate: 0.01
+
+output:
+  verbose: True
+  save_pcd: False
+  viz_pcd: False
+  save_mesh: True
+  viz_mesh: True

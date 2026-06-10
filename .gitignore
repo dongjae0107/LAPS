@@ -1,0 +1,17 @@
+# Dataset
+dataset/maicity
+dataset/ncd
+dataset/spires
+
+# Output
+output/
+
+# Python
+*.pyc
+__pycache__/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
